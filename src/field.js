@@ -33,4 +33,40 @@ class Field {
         this.field[y][x] = block_color
     }
 
+    /**
+     * 指定した座標にテトロミノをおけるなら true
+     * すでにブロックがある場合は false
+     * @param {*} x 基点
+     * @param {*} y 基点
+     * @param {Tetromino} tetromino 
+     */
+    canPutTetromino(px,py,tetromino){
+        for (let y = 0; y < Tetromino.SIZE; y++) {
+            for (let x = 0; x < Tetromino.SIZE; x++) {
+
+                // ブロックではないマスだから飛ばしてOK
+                if ( tetromino.isBlock(x,y) === false){
+                    continue
+                }
+
+                // ブロックが範囲外に飛び出てしまっている
+                if (
+                    x + px >= Field.COLS ||
+                    y + py >= Field.ROWS ||
+                    x + px < 0 ||
+                    y + py < 0
+                ){
+                    return false
+                }
+
+                // 何もないマスだから飛ばしてOK
+                if ( this.field[py + y][px + x] === null){
+                    continue
+                }
+
+                return false
+            }
+        }
+        return true
+    }
 }

@@ -46,4 +46,20 @@ class Drawer {
             SQUARE_SIZE_PX
         )
     }
+
+    /**
+     * @param {Field} field 
+     */
+    drawField(field){
+        for (let y = 0; y < Field.ROWS ; y++) {
+            for (let x = 0; x < Field.COLS ; x++) {
+                let square = field.field[y][x]
+                if ( square === null ){
+                    this.clearSquare(x,y)
+                }else{
+                    this.drawSquare(x,y,square)
+                }
+            }
+        }
+    }
 }

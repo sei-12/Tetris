@@ -61,4 +61,20 @@ class Tetromino {
     isBlock(x,y){
         return this.map[y][x] === 1
     }
+    
+    /**
+     * 90度回転させる (時計回り)
+     */
+    rotate(){
+        let rotatedMap = []
+        for (let x = 0; x < Tetromino.SIZE; x++) {
+            let colMap = []
+            for (let y = Tetromino.SIZE - 1; y >= 0; y--) {
+                colMap.push(this.map[y][x])
+            }
+            rotatedMap.push(colMap)
+        }
+
+        return new Tetromino(rotatedMap,this.color)
+    }
 }

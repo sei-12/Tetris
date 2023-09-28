@@ -23,3 +23,6 @@ drawer.drawSquare(5,10,"green")
 drawer.drawSquare(5,20,"rgb(100,100,100)")
 drawer.drawSquare(7,20,"#ccc")
 
+drawer.clearSquare(4,10)
+drawer.clearSquare(9,21)
+drawer.clearSquare(5,5)

@@ -32,4 +32,18 @@ class Drawer {
             SQUARE_SIZE_PX
         )
     }
+
+    /**
+     * 指定したマスを透明にする
+     * @param {number} x 
+     * @param {number} y 
+     */
+    clearSquare(x,y){
+        this.context.clearRect(
+            x * SQUARE_SIZE_PX,
+            y * SQUARE_SIZE_PX,
+            SQUARE_SIZE_PX,
+            SQUARE_SIZE_PX
+        )
+    }
 }

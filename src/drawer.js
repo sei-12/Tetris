@@ -62,4 +62,25 @@ class Drawer {
             }
         }
     }
+
+    /**
+     * @param {number} dx 基点
+     * @param {number} dy 基点
+     * @param {Tetromino} tetromino 
+     */
+    drawTetromino(dx,dy,tetromino){
+        for (let y = 0; y < Tetromino.SIZE; y++) {
+            for (let x = 0; x < Tetromino.SIZE; x++) {
+                if ( tetromino.isBlock(x,y) === false){
+                    continue;
+                }
+
+                this.drawSquare(
+                    dx + x,
+                    dy + y,
+                    tetromino.color
+                )
+            }
+        }
+    }
 }

@@ -1,16 +1,39 @@
+class ClearFilledRowResult {
+    #rows
+
+    constructor(){
+        /** @type {{row:string[],index:number}[]} */
+        this.#rows = []
+    }
+
+    /**
+     * @param {string[]} row 取り出した配列
+     * @param {number} index 取り出した配列の添字 (y座標)
+     */
+    push(row,index){
+        this.#rows.push({
+            row,
+            index
+        })
+    }
+
+    pop(){
+        return this.#rows.pop()
+    }
+}
 
 class Field {
     static COLS = 10
     static ROWS = 22
 
+    static #emptyRow(){
+        return Array(this.COLS).fill(null)
+    }
+
     static createNew(){
         let ary = []
         for (let y = 0; y < this.ROWS ; y++) {
-            let row_ary = []
-            for (let x = 0; x < this.COLS; x++) {
-                row_ary.push(null)
-            }
-            ary.push(row_ary)
+            ary.push(this.#emptyRow())
         }
 
         return new Field(ary)
@@ -68,5 +91,34 @@ class Field {
             }
         }
         return true
+    }
+
+    /**
+     * 埋まっている行のブロックを削除する
+     * 削除した行の情報を返す
+     */
+    clearFilledRow(){
+        let result = new ClearFilledRowResult()
+        let num_filledRows = 0
+
+        for (let y = Field.ROWS - 1; y >= 0; y--) {
+            if ( this.isFilledRow(this.field[y]) === false ){
+                continue
+            }
+            
+            let filledRow = this.field.splice(y,1)
+            result.push(filledRow,y)
+            num_filledRows += 1;
+        }
+
+        for (let _ = 0; _ < num_filledRows; _++) {
+            this.field.unshift(Field.#emptyRow())
+        }
+
+        return result
+    }
+
+    isFilledRow(row){
+        return row.every( square => typeof square === "string" )
     }
 }

@@ -1,9 +1,7 @@
 class ClearFilledRowResult {
-    #rows
-
     constructor(){
         /** @type {{row:string[],index:number}[]} */
-        this.#rows = []
+        this.rows = []
     }
 
     /**
@@ -11,14 +9,14 @@ class ClearFilledRowResult {
      * @param {number} index 取り出した配列の添字 (y座標)
      */
     push(row,index){
-        this.#rows.push({
+        this.rows.push({
             row,
             index
         })
     }
 
     pop(){
-        return this.#rows.pop()
+        return this.rows.pop()
     }
 }
 

@@ -1,12 +1,26 @@
 const SQUARE_SIZE_PX = 30
 
-class Drawer {
+class FieldCanvas {
     constructor(canvas){
         /** @type {HTMLCanvasElement} */
         this.canvas = canvas
+        this.canvas.width = SQUARE_SIZE_PX * Field.COLS
+        this.canvas.height = SQUARE_SIZE_PX * Field.ROWS
+        this.canvas.style.border = "solid black 3px"
+    }
+
+    getContext2D(){
+        return this.canvas.getContext("2d")
+    }
+}
+
+class Drawer {
+    constructor(canvas){
+        /** @type {FieldCanvas} */
+        this.canvas = canvas
 
         /** @type {CanvasRenderingContext2D} */
-        this.context = this.canvas.getContext("2d")
+        this.context = this.canvas.getContext2D()
     }
 
     /**

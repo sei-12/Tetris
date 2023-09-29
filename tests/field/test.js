@@ -1,11 +1,7 @@
 
 /** @type {HTMLCanvasElement} */
 const can = document.getElementById("can")
-
-can.width = SQUARE_SIZE_PX * Field.COLS
-can.height = SQUARE_SIZE_PX * Field.ROWS
-
-const drawer = new Drawer(can)
+const drawer = new Drawer(new FieldCanvas(can))
 const field = Field.createNew()
 
 field.putBlock(1,1,"red")
@@ -43,9 +39,7 @@ drawer.drawField(field)
 
 
 const can2 = document.getElementById('can2')
-const drawer2 = new Drawer(can2)
-can2.width = SQUARE_SIZE_PX * Field.COLS
-can2.height = SQUARE_SIZE_PX * Field.ROWS
+const drawer2 = new Drawer(new FieldCanvas(can2))
 
 let clearFilledRowResult = field.clearFilledRow()
 console.log(clearFilledRowResult)

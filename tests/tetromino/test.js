@@ -1,14 +1,7 @@
 
 /** @type {HTMLCanvasElement} */
 const can = document.getElementById("can")
-
-const ROWS = 22;
-const COLS = 10;
-
-can.width = SQUARE_SIZE_PX * COLS
-can.height = SQUARE_SIZE_PX * ROWS
-
-const drawer = new Drawer(can)
+const drawer = new Drawer(new FieldCanvas(can))
 
 drawer.drawTetromino(0,0,Tetromino.I())
 drawer.drawTetromino(4,0,Tetromino.T())

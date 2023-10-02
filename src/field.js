@@ -119,4 +119,8 @@ class Field {
     isFilledRow(row){
         return row.every( square => typeof square === "string" )
     }
+
+    gameover(){
+        return this.field[0].every( s => s === null ) === false
+    }
 }

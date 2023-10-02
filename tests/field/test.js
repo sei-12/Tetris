@@ -44,3 +44,18 @@ const drawer2 = new Drawer(new FieldCanvas(can2))
 let clearFilledRowResult = field.clearFilledRow()
 console.log(clearFilledRowResult)
 drawer2.drawField(field)
+
+
+if ( field.gameover() ){
+    console.error("field.gameover ...fault")
+}else{
+    console.log("field.gameover ...ok")
+}
+
+field.putBlock(0,0,'red')
+
+if ( field.gameover() ){
+    console.log("field.gameover ...ok")
+}else{
+    console.error("field.gameover ...fault")
+}

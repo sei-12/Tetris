@@ -52,6 +52,19 @@ class Tetromino {
         let color = "red"
         return new Tetromino(map,color)
     }
+    static random(){
+        let funcs = [
+            this.I,
+            this.L,
+            this.O,
+            this.S,
+            this.T
+        ]
+
+        let index = Math.floor(Math.random() * funcs.length)
+
+        return funcs[index]()
+    }
 
     constructor(map,color){
         this.map = map

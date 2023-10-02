@@ -14,3 +14,17 @@ drawer.drawTetromino(4,12,Tetromino.S().rotate())
 drawer.drawTetromino(0,16,Tetromino.S().rotate().rotate())
 drawer.drawTetromino(4,16,Tetromino.S().rotate().rotate().rotate())
 
+let count = {
+    red:0,
+    green:0,
+    blue:0,
+    orange:0,
+    yellow:0
+}
+
+for (let i = 0; i < 10000; i++) {
+    let tet = Tetromino.random()
+    count[tet.color] += 1    
+}
+
+console.log(count)

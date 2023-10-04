@@ -9,3 +9,14 @@ class ScoreCalculator {
         return score * result.rows.length
     }
 }
+
+class ScoreViewer {
+    constructor(div){
+        /** @type {HTMLDivElement} */
+        this.div = div
+    }
+
+    view(score){
+        this.div.innerText = score + "点"
+    }
+}

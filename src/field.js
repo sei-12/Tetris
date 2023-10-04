@@ -55,6 +55,25 @@ class Field {
     }
 
     /**
+     * 
+     * @param {*} baseX 
+     * @param {*} baseY 
+     * @param {Tetromino} tetromino 
+     */
+    putTetromino(baseX,baseY,tetromino){
+        for (let y = 0; y < Tetromino.SIZE; y++) {
+            for (let x = 0; x < Tetromino.SIZE; x++) {
+                if (tetromino.isBlock(x,y) === false) continue;
+                this.putBlock(
+                    baseX + x,
+                    baseY + y,
+                    tetromino.color
+                )
+            }
+        }
+    }
+
+    /**
      * 指定した座標にテトロミノをおけるなら true
      * すでにブロックがある場合は false
      * @param {*} x 基点

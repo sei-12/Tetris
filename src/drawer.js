@@ -39,6 +39,7 @@ class Drawer {
         )
 
         this.context.strokeStyle = "black"
+        this.context.lineWidth = 1
         this.context.strokeRect(
             x * SQUARE_SIZE_PX,
             y * SQUARE_SIZE_PX,
@@ -96,5 +97,16 @@ class Drawer {
                 )
             }
         }
+    }
+
+    drawGameoverLine(){
+        this.context.strokeStyle = "red"
+        this.context.lineWidth = 3
+        this.context.beginPath()
+        let y = 4 * SQUARE_SIZE_PX
+        this.context.moveTo(0,y)
+        this.context.lineTo(Field.COLS * SQUARE_SIZE_PX,y)
+
+        this.context.stroke()
     }
 }

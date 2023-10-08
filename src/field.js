@@ -22,7 +22,9 @@ class ClearFilledRowResult {
 
 class Field {
     static COLS = 10
-    static ROWS = 22
+    static GAMEOVER_LINE = 22
+    static ROWS = Field.GAMEOVER_LINE + 4
+
 
     static #emptyRow(){
         return Array(this.COLS).fill(null)
@@ -140,6 +142,11 @@ class Field {
     }
 
     gameover(){
-        return this.field[0].every( s => s === null ) === false
+        for (let i = 0; i < 4; i++) {
+            if ( this.field[i].every( v => v === null) === false){
+                return true
+            }
+        }
+        return false
     }
 }
